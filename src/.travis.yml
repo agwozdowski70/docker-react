@@ -4,11 +4,11 @@ language: generic
 services:
   - docker
 
-before_install: "echo 'before deploy'"
-  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
+before_deploy: "echo 'before deploy'"
+  - docker build -t ag/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true stephengrider/docker-react npm run test
+  - docker run -e CI=true ag/docker-react npm run test
 
 deploy:
   provider: elasticbeanstalk
