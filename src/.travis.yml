@@ -4,7 +4,7 @@ language: generic
 services:
   - docker
 
-before_install:
+before_install: "echo 'before deploy'"
   - docker build -t stephengrider/docker-react -f Dockerfile.dev .
 
 script:
@@ -23,3 +23,5 @@ deploy:
   bucket_path: 'docker'
   on:
     branch: master
+
+after_deploy: "echo 'after deploy'"
